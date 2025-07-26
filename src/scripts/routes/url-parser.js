@@ -7,6 +7,7 @@
  */
 function extractPathnameSegments(path) {
   const splitUrl = path.split("/");
+  console.log(splitUrl);
 
   return {
     resource: splitUrl[1] || null,
@@ -43,7 +44,8 @@ function constructRouteFromSegments(pathSegments) {
  * @returns {string} path yang aktif
  */
 export function getActivePathname() {
-  return location.hash.replace("#", "") || "/";
+  return location.pathname || "/";
+  // return location.hash.replace("#", "") || "/";
 }
 
 /**

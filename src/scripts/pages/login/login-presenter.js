@@ -35,7 +35,8 @@ class LoginPresenter {
 
       await this.#loginPage.successHandlerFetch(response);
       // langsung ke url dashboard
-      window.location.replace("#/");
+      history.replaceState({}, "", "/");
+      await app.renderPage(); // render halaman dashboard secara manual
     } catch (error) {
       await this.#loginPage.errorHandlerFetch(error);
     }

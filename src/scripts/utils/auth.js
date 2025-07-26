@@ -62,9 +62,6 @@ export function updateNavbarUI(userData) {
     if (authLinks) authLinks.classList.add("d-none");
     if (userLinks) {
       userLinks.classList.remove("d-none");
-      // Anda bisa menambahkan logika untuk menampilkan nama pengguna di sini jika ada
-      // const profileLink = userLinks.querySelector('a[href="#/profile"]');
-      // if (profileLink) profileLink.textContent = userData.username || "Profile Saya";
     }
   } else {
     if (authLinks) authLinks.classList.remove("d-none");
@@ -78,7 +75,7 @@ export function updateNavbarUI(userData) {
 export async function logoutUser() {
   try {
     await getData(undefined, undefined, "/auth/logout"); // Panggil endpoint logout di backend
-    window.location.replace("#/"); // Redirect ke halaman utama setelah logout
+    window.location.href = "/"; // Redirect ke halaman utama setelah logout
     // Perbarui UI navbar setelah logout
     updateNavbarUI(null);
   } catch (error) {

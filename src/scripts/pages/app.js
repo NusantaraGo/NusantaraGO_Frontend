@@ -13,6 +13,7 @@ class App {
 
   async renderPage() {
     const url = getActiveRoute();
+    console.log("url new", url);
     const page = routes[url];
 
     // cek trasnition bisa digunakan atau tidak
