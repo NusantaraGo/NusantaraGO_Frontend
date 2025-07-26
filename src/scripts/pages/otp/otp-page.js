@@ -17,7 +17,7 @@ export default class OtpPage {
                 <div class="col-lg-6">
                     <div class="card-body py-3 px-md-5">
                         <div class="text-center mb-3">
-                            <img src="images/logo.png" style="width: 185px;" alt="logo">
+                            <img src="/images/logo.png" style="width: 185px;" alt="logo.png">
                         </div>
                         <form>
                             <h3 class="poppins-bold" style="color: #b57547;">OTP</h3>
@@ -116,11 +116,11 @@ export default class OtpPage {
   checkSearchParams() {
     // ambil uuid pathname dari url
 
-    const url = new URL(window.location.href);
-    const searchParams = url.hash.split("/")[2];
+    const url = new URL(window.location.href).pathname;
+    const searchParams = url.split("/")[2];
 
     if (!searchParams) {
-      return window.location.reload();
+      return (window.location.href = "/register");
     }
 
     let isValid = true;
@@ -251,7 +251,7 @@ export default class OtpPage {
     // Mulai countdown
     this.startOtpCountdown(remainingSeconds, display, () => {
       display.innerHTML =
-        "Kode anda sudah kadaluarsa. <a href='#/register'>Daftar ulang</a>";
+        "Kode anda sudah kadaluarsa. <a href='/register'>Daftar ulang</a>";
       display.classList.add("text-muted");
       titleTime.textContent = "Waktu Habis";
 
