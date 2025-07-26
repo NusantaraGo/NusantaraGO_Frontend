@@ -182,6 +182,8 @@ export default class OtpPage {
 
     // submit button
     const handleSubmit = (event) => {
+      event.preventDefault();
+
       console.log(event.submitter?.id);
       if (event.submitter?.id === "verifikasiOtpButton") {
         // chekc params
@@ -225,6 +227,7 @@ export default class OtpPage {
             searchParams: searchParams.trim(),
             otp: otp.value,
           };
+          console.log(data);
           // kirimkan ke bagian presenter
           this.sendToBackend(data);
         }

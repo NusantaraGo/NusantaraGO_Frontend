@@ -36,6 +36,7 @@ export function visibleNavbarAndFooter() {
  * @returns {Promise<object | null>} The user data if authenticated, otherwise null.
  */
 export async function checkUserAuth() {
+  console.log("jalan");
   try {
     const response = await getData(undefined, undefined, "/auth/get-user");
     console.log("Response from /auth/get-user:", response);

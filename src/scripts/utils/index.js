@@ -37,6 +37,7 @@ function handlingMessage(icon = "success", title = "OOPS!", message) {
     icon: icon,
     title: `${title}`,
     html: message,
+    timer: 3000,
   });
 }
 

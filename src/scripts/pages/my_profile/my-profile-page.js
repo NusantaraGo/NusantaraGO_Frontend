@@ -229,112 +229,116 @@ export default class myProfilePage {
       });
     });
 
-    // Form validation and submission
-    document
-      .getElementById("profileForm")
-      .addEventListener("submit", async (e) => {
-        e.preventDefault();
+    if (document.getElementById("profileForm")) {
+      // Form validation and submission
+      document
+        .getElementById("profileForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
 
-        /* The code is attempting to retrieve the values of the "username", "email", "password", and
+          /* The code is attempting to retrieve the values of the "username", "email", "password", and
           "confirmPassword" fields from an HTML form. However, there seems to be a syntax error in
           the code where the "document" object is not followed by a method or property to access the
           "confirmPassword" field. The code snippet provided is incomplete and needs to be corrected
           to properly access the form elements. */
-        const username = document.getElementById("username").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const password = document.getElementById("password").value;
-        const confirmPassword =
-          document.getElementById("confirmPassword").value;
-        try {
-          /* The above JavaScript code is checking if the variables `username` and `email` are falsy
+          const username = document.getElementById("username").value.trim();
+          const email = document.getElementById("email").value.trim();
+          const password = document.getElementById("password").value;
+          const confirmPassword =
+            document.getElementById("confirmPassword").value;
+          try {
+            /* The above JavaScript code is checking if the variables `username` and `email` are falsy
             (empty, null, undefined, 0, false, NaN). If either `username` or `email` is falsy, it
             throws an error with the message "field username dan email wajib diisi." which means
             "username and email fields are mandatory." This code is enforcing the requirement that
             both `username` and `email` must be provided before proceeding with further execution. */
-          if (!username || !email) {
-            throw new Error("field username dan email wajib diisi.");
-          }
+            if (!username || !email) {
+              throw new Error("field username dan email wajib diisi.");
+            }
 
-          /* The above code is checking if the email address ends with "@gmail.com". If the email
+            /* The above code is checking if the email address ends with "@gmail.com". If the email
             address does not end with "@gmail.com", it will throw an error with the message "email
             wajib menggunakan domain @gmail.com." This code is enforcing a requirement that the email
             address must use the domain "@gmail.com". */
-          if (!email.endsWith("@gmail.com")) {
-            throw Error("email wajib menggunakan domain @gmail.com.");
+            if (!email.endsWith("@gmail.com")) {
+              throw Error("email wajib menggunakan domain @gmail.com.");
+            }
+          } catch (error) {
+            await this.errorHandlerFetch(error);
+            return;
           }
-        } catch (error) {
-          await this.errorHandlerFetch(error);
-          return;
-        }
 
-        // Reset previous validation states
-        document
-          .getElementById("confirmPassword")
-          .classList.remove("is-invalid");
-
-        // Check if passwords match
-        if (password !== confirmPassword) {
+          // Reset previous validation states
           document
             .getElementById("confirmPassword")
-            .classList.add("is-invalid");
-          return;
-        }
+            .classList.remove("is-invalid");
 
-        // Here you would typically send the data to a server
-        const datas = {
-          username: username,
-          email: email,
-          password: password,
-          password2: confirmPassword,
-        };
+          // Check if passwords match
+          if (password !== confirmPassword) {
+            document
+              .getElementById("confirmPassword")
+              .classList.add("is-invalid");
+            return;
+          }
 
-        this.#presenterPage = new MyProfilePresenter({ myProfilePage: this });
-        this.#presenterPage.sendDataToApi(datas);
-      });
+          // Here you would typically send the data to a server
+          const datas = {
+            username: username,
+            email: email,
+            password: password,
+            password2: confirmPassword,
+          };
 
-    // Real-time password matching validation
-    document
-      .getElementById("confirmPassword")
-      .addEventListener("input", function () {
-        const password = document.getElementById("password").value;
-        const confirmPassword = this.value;
+          this.#presenterPage = new MyProfilePresenter({ myProfilePage: this });
+          this.#presenterPage.sendDataToApi(datas);
+        });
 
-        if (confirmPassword && password !== confirmPassword) {
-          this.classList.add("is-invalid");
-        } else {
-          this.classList.remove("is-invalid");
-        }
-      });
+      // Real-time password matching validation
+      document
+        .getElementById("confirmPassword")
+        .addEventListener("input", function () {
+          const password = document.getElementById("password").value;
+          const confirmPassword = this.value;
 
-    // Reset form handler and reset password
-    document
-      .getElementById("profileForm")
-      .addEventListener("reset", function () {
-        document
-          .getElementById("confirmPassword")
-          .classList.remove("is-invalid");
-        setTimeout(() => {
-          // Reset password visibility
-          document.getElementById("password").type = "password";
-          document.getElementById("confirmPassword").type = "password";
+          if (confirmPassword && password !== confirmPassword) {
+            this.classList.add("is-invalid");
+          } else {
+            this.classList.remove("is-invalid");
+          }
+        });
+
+      // Reset form handler and reset password
+      document
+        .getElementById("profileForm")
+        .addEventListener("reset", function () {
           document
-            .getElementById("password-eye")
-            .classList.remove("fa-eye-slash");
-          document.getElementById("password-eye").classList.add("fa-eye");
-          document
-            .getElementById("confirmPassword-eye")
-            .classList.remove("fa-eye-slash");
-          document
-            .getElementById("confirmPassword-eye")
-            .classList.add("fa-eye");
-        }, 10);
-      });
+            .getElementById("confirmPassword")
+            .classList.remove("is-invalid");
+          setTimeout(() => {
+            // Reset password visibility
+            document.getElementById("password").type = "password";
+            document.getElementById("confirmPassword").type = "password";
+            document
+              .getElementById("password-eye")
+              .classList.remove("fa-eye-slash");
+            document.getElementById("password-eye").classList.add("fa-eye");
+            document
+              .getElementById("confirmPassword-eye")
+              .classList.remove("fa-eye-slash");
+            document
+              .getElementById("confirmPassword-eye")
+              .classList.add("fa-eye");
+          }, 10);
+        });
 
-    // delete conformation
-    document.getElementById("logout").addEventListener("click", async (e) => {
-      e.preventDefault();
-      this.handleLogout();
-    });
+      // delete conformation
+      document.getElementById("logout").addEventListener("click", async (e) => {
+        e.preventDefault();
+        return this.handleLogout();
+      });
+    }
+
+    return;
   }
 
   /**

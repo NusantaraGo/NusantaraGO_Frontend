@@ -24,7 +24,7 @@ class PencarianPresenter {
       return response;
     } catch (error) {
       await this.#pencarianPage.errorHandlerFetch(error);
-      window.location.replace("/login");
+      window.location.href = "/login";
     }
   }
 
