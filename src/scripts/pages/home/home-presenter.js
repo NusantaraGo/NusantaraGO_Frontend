@@ -4,7 +4,7 @@ class HomePresenter {
     // Configuration object
     this.config = {
       routes: {
-        search: "#/pencarian",
+        search: "/pencarian",
       },
       selectors: {
         navbar: "nav.navbar",

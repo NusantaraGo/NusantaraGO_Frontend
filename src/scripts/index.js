@@ -26,6 +26,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
   await app.renderPage();
 
+  console.log("jalan");
+
   // Update navbar UI on initial load
   const userData = await checkUserAuth();
   updateNavbarUI(userData);
@@ -38,10 +40,47 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
-  window.addEventListener("hashchange", async () => {
+  // ⏪ Tangani tombol back/forward
+  window.addEventListener("popstate", async () => {
+    console.log("jalan");
     await app.renderPage();
     // Update navbar UI on hash change
     const newUserData = await checkUserAuth();
     updateNavbarUI(newUserData);
+  });
+
+  // ⛓️ Tangani klik semua link internal
+  document.addEventListener("click", async (e) => {
+    console.log(e);
+
+    const link = e.target.closest("a");
+    console.log("link apa ini", link);
+    console.log(
+      link &&
+        link.origin === location.origin &&
+        !link.hasAttribute("data-external") &&
+        link.getAttribute("href") &&
+        !link.getAttribute("href").startsWith("http") &&
+        !link.getAttribute("href").startsWith("mailto:")
+    );
+    if (
+      link &&
+      link.origin === location.origin &&
+      !link.hasAttribute("data-external") &&
+      link.getAttribute("href") &&
+      !link.getAttribute("href").startsWith("http") &&
+      !link.getAttribute("href").startsWith("mailto:")
+    ) {
+      e.preventDefault();
+
+      await app.renderPage();
+
+      const href = link.getAttribute("href");
+      history.pushState({}, "", href);
+      await app.renderPage();
+
+      const userData = await checkUserAuth();
+      updateNavbarUI(userData);
+    }
   });
 });

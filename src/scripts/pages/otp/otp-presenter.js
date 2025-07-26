@@ -22,7 +22,7 @@ class OtpPresenter {
 
       await this.#otpPage.successHandlerFetch(response);
       // langsung ke url login
-      window.location.replace("#/login");
+      window.location.href = "/login";
     } catch (error) {
       await this.#otpPage.errorHandlerFetch(error);
     }

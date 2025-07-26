@@ -3,7 +3,7 @@ import { hideNavbarAndFooter } from "../../utils/auth";
 import LoginPresenter from "./login-presenter";
 
 export default class LoginPage {
-  #presenterPage = null;
+  presenterPage = null;
   /**
    * Render the login page
    * @returns {string} the login page
@@ -19,22 +19,22 @@ export default class LoginPage {
                 <div class="col-lg-6">
                     <div class="card-body px-md-5">
                         <div class="text-center mb-3">
-                          <a href="#/">
+                          <a href="/">
                             <img class="img-fluid"  src="images/logo.png" style="width: 185px;" alt="logo">
                           </a>
                         </div>
                         <form id="loginForm">
-                            <h3 class="poppins-bold" style="color: #b57547;">Login Akun</h3>
+                            <h3 class="poppins-bold" style="color: b57547;">Login Akun</h3>
                             <!-- username input -->
                             <div class="form-outline mb-3">
                                 <label class="form-label" for="form2Example1">Username</label>
-                                <input type="text" id="username" class="form-control" required>
+                                <input type="text" id="username" class="form-control" data-external required>
                             </div>
 
                             <!-- Password input -->
                             <div class="form-outline mb-3">
                                 <label class="form-label" for="form2Example2">Password</label>
-                                <input type="password" id="password" class="form-control" required>
+                                <input type="password" id="password" class="form-control" data-external required>
                             </div>
 
                             <!-- Submit button -->
@@ -42,7 +42,7 @@ export default class LoginPage {
                                 Login
                             </button>
                             <hr>
-                            <p class="text-center">Belum punya akun? <a href="#/register" style='color: #548895'>Daftar Disini</a></p>
+                            <p class="text-center">Belum punya akun? <a href="/register" style='color: 548895'>Daftar Disini</a></p>
 
                             <br><br>
                             <footer class="text-center text-muted"> ©2025 NusantaraGo</footer>
@@ -79,6 +79,8 @@ export default class LoginPage {
 
     // submit button
     const handleSubmit = (event) => {
+      event.preventDefault();
+
       if (event.target.id === "masukButton") {
         const inputs = [username, password];
         let isValid = true;
@@ -108,11 +110,11 @@ export default class LoginPage {
           };
 
           // kirimkan ke bagian presenter
-          this.#presenterPage = new LoginPresenter({
+          this.presenterPage = new LoginPresenter({
             loginPage: this,
           });
           // kirim kan keapi melalui presenter
-          if (this.#presenterPage) this.#presenterPage.sendDataToAPI(data);
+          if (this.presenterPage) this.presenterPage.sendDataToAPI(data);
         }
       }
     };

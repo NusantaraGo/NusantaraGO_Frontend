@@ -41,5 +41,7 @@ module.exports = merge(common, {
         warnings: true,
       },
     },
+    open: true,
+    historyApiFallback: true, // ⬅️ ini bagian penting
   },
 });

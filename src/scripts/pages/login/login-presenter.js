@@ -32,11 +32,13 @@ class LoginPresenter {
         undefined,
         "/auth/login"
       );
+      console.log(response);
 
       await this.#loginPage.successHandlerFetch(response);
       // langsung ke url dashboard
-      window.location.replace("#/");
+      window.location.href = "/";
     } catch (error) {
+      console.log(error);
       await this.#loginPage.errorHandlerFetch(error);
     }
   }

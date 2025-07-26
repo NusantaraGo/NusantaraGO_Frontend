@@ -21,7 +21,7 @@ export default class HomePage {
               NusantaraGo memudahkan wisatawan menemukan destinasi terbaik di Indonesia. 
               Jelajahi Nusantara tanpa bingung menentukan tujuan!
             </p>
-            <a id="explore-button" class="btn btn-lg mt-3" style="background-color: #3b5941; color: white;" href="#/pencarian">Mulai Eksplorasi</a>
+            <a id="explore-button" class="btn btn-lg mt-3" style="background-color: #3b5941; color: white;" href="/pencarian">Mulai Eksplorasi</a>
           </div>
           <div class="col-md-6 text-center mt-4 mt-md-0">
             <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" alt="Bali Sunset" class="img-fluid rounded shadow" style="max-height: 350px;">
