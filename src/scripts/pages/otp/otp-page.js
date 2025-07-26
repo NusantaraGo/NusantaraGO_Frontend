@@ -38,7 +38,7 @@ export default class OtpPage {
                                 Verifikasi OTP
                             </button>
                             <hr>
-                            <p class="text-center">Batalkan pembuatan akun? <a href="#/login" style='color: #548895'>Login
+                            <p class="text-center">Batalkan pembuatan akun? <a href="/login" style='color: #548895'>Login
                                     Disini</a></p>
 
                             <br><br>

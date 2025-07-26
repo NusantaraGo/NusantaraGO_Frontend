@@ -364,7 +364,7 @@ export default class myProfilePage {
         if (errJson.status >= 400) {
           errorHandling(errJson.error, errJson.message);
           if (errJson.status === 401) {
-            window.location.href = "#/login";
+            window.location.href = "/login";
           }
         }
       } else {

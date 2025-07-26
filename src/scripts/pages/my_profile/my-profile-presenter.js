@@ -64,7 +64,7 @@ export default class myProfilePage {
     try {
       const response = await getData(undefined, undefined, "/auth/logout");
       await this.#myProfilePage.successHandlerFetch(response);
-      window.location.replace("#/");
+      window.location.replace("/");
     } catch (error) {
       await this.#myProfilePage.errorHandlerFetch(error);
     }

@@ -190,7 +190,7 @@ class PencarianPage {
               </div>
               <div class="mt-auto">
                 <div class="d-flex justify-content-between align-items-center">
-                  <a href="#/detail/${item.id}" class="btn btn-custom">
+                  <a href="/detail/${item.id}" class="btn btn-custom">
                     <i class="fas fa-info-circle me-2"></i>Lihat Detail
                   </a>
                 </div>

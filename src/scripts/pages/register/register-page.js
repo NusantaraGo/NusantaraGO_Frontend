@@ -51,7 +51,7 @@ export default class RegisterPage {
                                 Daftar
                             </button>
                             <hr>
-                            <p class="text-center">Sudah punya akun? <a href="#/login" style='color: #548895'>Login
+                            <p class="text-center">Sudah punya akun? <a href="/login" style='color: #548895'>Login
                                     Disini</a></p>
 
                             <br><br>
@@ -96,6 +96,8 @@ export default class RegisterPage {
 
     // Submit button
     const handleSubmit = (event) => {
+      event.preventDefault();
+
       if (event.target.id === "registerButton") {
         const username = document.querySelector("#username");
         const email = document.querySelector("#email");

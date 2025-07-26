@@ -40,7 +40,7 @@ class RegisterPresenter {
       );
 
       await this.#registerPage.successHandlerFetch(response);
-      window.location.replace("#/verify-otp/" + email);
+      window.location.replace("/verify-otp/" + email);
     } catch (error) {
       await this.#registerPage.errorHandlerFetch(error);
     }

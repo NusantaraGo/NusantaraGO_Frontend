@@ -79,6 +79,8 @@ export default class LoginPage {
 
     // submit button
     const handleSubmit = (event) => {
+      event.preventDefault();
+
       if (event.target.id === "masukButton") {
         const inputs = [username, password];
         let isValid = true;
