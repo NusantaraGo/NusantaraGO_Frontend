@@ -2,21 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Halaman Beranda -->
   <url>
-    <loc>https://nusantarago.pages.dev/</loc>
+    <loc>https://nusantarago.netlify.app/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <!-- Halaman Jelajahi -->
   <url>
-    <loc>https://nusantarago.pages.dev/pencarian</loc>
+    <loc>https://nusantarago.netlify.app/pencarian</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Halaman Profile (jika bisa diakses publik) -->
   <url>
-    <loc>https://nusantarago.pages.dev/profile</loc>
+    <loc>https://nusantarago.netlify.app/profile</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
